@@ -1,5 +1,5 @@
 require_relative "boot"
-
+require_relative "../lib/middleware/coffee_pot_control_protocol"
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
@@ -12,7 +12,8 @@ module CpSquared
     config.load_defaults 7.0
 
     # Configuration for the application, engines, and railties goes here.
-    #
+    config.middleware.insert_before 0, CoffeePotControlProtocol
+    
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
